@@ -6,4 +6,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Lib1">
+      <HintPath>..\Lib1\bin\Debug\netstandard2.0\Lib1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
