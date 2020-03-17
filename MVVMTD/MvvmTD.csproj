@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Lib1\Lib1.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Lib1">
       <HintPath>..\Lib1\bin\Debug\netstandard2.0\Lib1.dll</HintPath>
     </Reference>

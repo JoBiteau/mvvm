@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Lib1.Entities;
+using Lib1.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,11 @@ namespace MvvmTD
         public MainWindow()
         {
             InitializeComponent();
+            Connect connect = new Connect();
+            List < Personne > liste = connect.Load();
+
+
+            //listPerson.Set
         }
     }
 }
