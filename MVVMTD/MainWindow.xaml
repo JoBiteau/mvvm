@@ -12,20 +12,54 @@
         
         Title="Pattern MVVM" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="82*"/>
+            <ColumnDefinition Width="255*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="2" Grid.Row="2" x:Name="listPerson"/>
-        
-        <StackPanel Grid.Column="1" Grid.Row="2">
-            <Button Content="Nouveau client"/>
-            <Button Content="Nouveau ami"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <ListBox Grid.Column="1" Grid.Row="1" x:Name="listPerson">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="{Binding Prenom Nom}" />
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
+        
+        <Label Content="Nom" Grid.Column="3" HorizontalAlignment="Left" Margin="74,163,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,162,0,0" Grid.Row="1"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+
+        <Label Content="Prenom" Grid.Column="3" HorizontalAlignment="Left" Margin="74,185,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,184,0,0" Grid.Row="1"  
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
+        <Label Content="Société" Grid.Column="3" HorizontalAlignment="Left" Margin="74,211,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,210,0,0" Grid.Row="1"   
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        
+        <Label Content="Téléphone" Grid.Column="3" HorizontalAlignment="Left" Margin="74,233,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,232,0,0" Grid.Row="1"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
+        <Label Content="Email" Grid.Column="3" HorizontalAlignment="Left" Margin="74,256,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,255,0,0" Grid.Row="1"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

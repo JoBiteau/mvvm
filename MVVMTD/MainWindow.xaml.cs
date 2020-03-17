@@ -26,10 +26,19 @@ namespace MvvmTD
         {
             InitializeComponent();
             Connect connect = new Connect();
-            List < Personne > liste = connect.Load();
+            List < Personne > listePersonne = connect.Load();
 
+            foreach (var Personne in listePersonne)
+            {
 
-            //listPerson.Set
+            }
+
+            listPerson.ItemsSource = listePersonne;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
