@@ -1,9 +1,5 @@
 bin
 obj
 MvvmTD.sln
+Lib1.sln
 .vs
-Lib1/bin
-Lib1/obj
-Lib1/Lib1.sln
-Lib1/.vs
-MvvmTD.sln
