@@ -12,10 +12,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <TextBox Grid.Row="0" Width="100"  
-                 Text="{Binding TextRechercher, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Background="{Binding TextRechercheNoMatch, Converter={StaticResource BoolToBackgroundConverter}}"
-                 CharacterCasing="Upper" ToolTip="Recherche sur le nom, prénom"/>
+        
         <ListBox Grid.Row="1" ItemsSource="{Binding ListeContacts}" IsSynchronizedWithCurrentItem="True">
             <ListBox.ItemTemplate>
                 <DataTemplate>
