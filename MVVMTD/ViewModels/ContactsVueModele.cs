@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace MvvmTD.ViewModels
 {
@@ -13,6 +14,9 @@ namespace MvvmTD.ViewModels
     {
         private readonly ObservableCollection<ContactVueModele> listeContacts;
         private readonly ICollectionView collectionView;
+
+        private RelayCommand newCustomerCommand;
+        private RelayCommand newFriendCommand;
 
         public ContactsVueModele()
         {
@@ -34,7 +38,6 @@ namespace MvvmTD.ViewModels
         public void OnCollectionViewCurrentChanged(object sender, EventArgs e)
         {
             OnPropertyChanged("ContactSelected");
-            Console.WriteLine("Current change on collection view");
         }
 
         public ObservableCollection<ContactVueModele> ListeContacts
@@ -49,6 +52,32 @@ namespace MvvmTD.ViewModels
                 if (null == collectionView.CurrentItem) return null;
                 return (ContactVueModele)collectionView.CurrentItem;
             }
+        }
+        public ICommand NewCustomer
+        {
+            get
+            {
+                if (null == newCustomerCommand) newCustomerCommand = new RelayCommand(AjoutClient);
+                return newCustomerCommand;
+            }
+        }
+        private void AjoutClient()
+        {
+            System.Windows.MessageBox.Show("Ajout d'un client");
+        }
+
+        public ICommand NewFriend
+        {
+            get
+            {
+                if (null == newFriendCommand) newFriendCommand = new RelayCommand(AjoutAmi);
+                return newFriendCommand;
+            }
+        }
+
+        private void AjoutAmi()
+        {
+            System.Windows.MessageBox.Show("Ajout d'un ami");
         }
     }
 }

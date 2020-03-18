@@ -1,11 +1,14 @@
 ﻿using ContactModele.Entities;
 using System;
+using System.Windows.Input;
 
 namespace MvvmTD.ViewModels
 {
     class ContactVueModele : ViewModelBase
     {
         private Personne contact;
+        private RelayCommand editCommand;
+        private RelayCommand delCommand;
 
         public ContactVueModele(Personne personne)
         {
@@ -15,6 +18,34 @@ namespace MvvmTD.ViewModels
         public Personne Contact
         {
             get{ return this.contact; }
+        }
+
+        public ICommand EditCommand
+        {
+            get
+            {
+                if (null == editCommand) editCommand = new RelayCommand(EnregistrerContact);
+                return editCommand;
+            }
+        }
+
+        private void EnregistrerContact()
+        {
+            System.Windows.MessageBox.Show("Enregistrement du contact");
+        }
+
+        public ICommand DelCommand
+        {
+            get
+            {
+                if (null == delCommand) delCommand = new RelayCommand(SupprimerContact);
+                return delCommand;
+            }
+        }
+
+        private void SupprimerContact()
+        {
+            System.Windows.MessageBox.Show("Suppression du contact");
         }
     }
 }
