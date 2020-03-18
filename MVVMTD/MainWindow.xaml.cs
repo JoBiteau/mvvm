@@ -31,5 +31,14 @@ namespace MvvmTD
             //listPerson.ItemsSource = listePersonne;
         }
 
+        private void UcContact_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

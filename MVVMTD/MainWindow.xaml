@@ -11,7 +11,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         
-        Title="Pattern MVVM" Height="450" Width="800">
+        Title="Pattern MVVM" Height="Auto" Width="800">
 
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
@@ -21,6 +21,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -38,5 +39,8 @@
 
         <Views:ucListContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Views:UcContact DataContext="{Binding ContactSelected}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+        <Button Content="&lt;" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Bottom" Command="{Binding CommandePrecedent}"/>
+        <Button Content="&gt;" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Bottom" Command="{Binding CommandeSuivant}"/>
     </Grid>
 </Window>

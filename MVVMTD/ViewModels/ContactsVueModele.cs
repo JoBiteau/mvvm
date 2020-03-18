@@ -17,6 +17,8 @@ namespace MvvmTD.ViewModels
 
         private RelayCommand newCustomerCommand;
         private RelayCommand newFriendCommand;
+        private RelayCommand commandeSuivant;
+        private RelayCommand commandePrecedent;
 
         public ContactsVueModele()
         {
@@ -78,6 +80,50 @@ namespace MvvmTD.ViewModels
         private void AjoutAmi()
         {
             System.Windows.MessageBox.Show("Ajout d'un ami");
+        }
+
+        public ICommand CommandeSuivant
+        {
+            get
+            {
+                if (commandeSuivant == null)
+                {
+                    commandeSuivant = new RelayCommand(GoSuivant, CanGoSuivant);
+                }
+                return commandeSuivant;
+            }
+        }
+
+        public void GoSuivant()
+        {
+            collectionView.MoveCurrentToNext();
+        }
+        public bool CanGoSuivant()
+        {
+            if (collectionView.CurrentPosition < ((System.Windows.Data.ListCollectionView)collectionView).Count - 1)
+                return true;
+            return false;
+        }
+    
+        public ICommand CommandePrecedent
+        {
+            get
+            {
+                if (commandePrecedent == null)
+                {
+                    commandePrecedent = new RelayCommand(GoPrecedent, CanGoPrecedent);
+                }
+                return commandePrecedent;
+            }
+        }
+
+        public void GoPrecedent()
+        {
+            collectionView.MoveCurrentToPrevious();
+        }
+        public bool CanGoPrecedent()
+        {
+            return collectionView.CurrentPosition == 1;
         }
     }
 }
