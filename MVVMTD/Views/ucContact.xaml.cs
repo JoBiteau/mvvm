@@ -1,5 +1,6 @@
 ﻿using ContactModele.Entities;
 using ContactModele.Services;
+using MvvmTD.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,36 +24,7 @@ namespace MvvmTD.Views
         public UcContact()
         {
             InitializeComponent();
-            Connect connect = new Connect();
-            listPerson.ItemsSource = connect.Load();
         }
-
-        private void InputNom_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void InputSociete_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        public void OnNameClicked()
-        {
-            Personne albert = new Client
-            {
-                Nom = "Albert",
-                Prenom = "Lecinquiememousquetaire",
-                Societe = "Spanguerro Spaggeti",
-                Email = "ursaf.forever@finance.gouv.fr",
-                Num_client = 42,
-                Telephone = "0123456789"
-            };
-        }
-
-        public void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Console.WriteLine("Ok, le texte à changé. A voir si on lui associe une action ou pas");
-        }
+        
     }
 }

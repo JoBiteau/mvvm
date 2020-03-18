@@ -8,7 +8,8 @@ namespace ContactModele.Entities
     {
         public int Num_client { get; set; }
         public string Societe { get; set; }
-        public string toString()
+
+        public override string ToString()
         {
             return $"{Prenom} {Nom} - Client : {Num_client} - {Societe}";
         }

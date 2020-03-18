@@ -1,11 +1,6 @@
-﻿using Lib1.Entities;
-using Lib1.Services;
-using MvvmTD.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,20 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MvvmTD
+namespace MvvmTD.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour ucListContact.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ucListContact : UserControl
     {
-        public MainWindow()
+        public ucListContact()
         {
             InitializeComponent();
-
-            this.DataContext = new ContactsVueModele();
-            //listPerson.ItemsSource = listePersonne;
         }
-
     }
 }

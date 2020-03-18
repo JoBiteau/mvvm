@@ -3,24 +3,18 @@ using System;
 
 namespace MvvmTD.ViewModels
 {
-    class ContactVueModele 
+    class ContactVueModele : ViewModelBase
     {
         private Personne contact;
 
         public ContactVueModele(Personne personne)
-            {
-            if (null == personne)
-            {
-                throw new NullReferenceException("Personne");
-            }
-            contact = personne;
+        {
+            contact = personne ?? throw new NullReferenceException("Personne");
         }
 
         public Personne Contact
         {
             get{ return this.contact; }
         }
-
-        
     }
 }

@@ -8,7 +8,8 @@ namespace ContactModele.Entities
     {
         public DateTime Anniversaire { get; set; }
         public int Num_mobile { get; set; }
-        public string toString()
+
+        public override string ToString()
         {
             return $"{Prenom} {Nom} - anniversaire : {Anniversaire} - {Num_mobile}";
         }

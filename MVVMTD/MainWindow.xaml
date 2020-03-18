@@ -36,6 +36,7 @@
             </MenuItem>
         </Menu>
 
-        <Views:UcContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Views:ucListContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Views:UcContact DataContext="{Binding ContactSelected}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
     </Grid>
 </Window>
