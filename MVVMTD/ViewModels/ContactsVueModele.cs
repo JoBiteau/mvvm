@@ -163,5 +163,25 @@ namespace MvvmTD.ViewModels
                 }
             }
         }
+
+        public string TexteRechercher
+        {
+            set
+            {
+                collectionView.Filter = item => IsMatch(item, value);
+            }
+        }
+
+        // Méthode appellée pour chaque élément de la collection
+        // pour déterminer si l'élément correspond ou non à la recherche.
+        private bool IsMatch(object item, string value)
+        {
+            if (!(item is ContactVueModele)) return false;
+
+            value = value.ToUpper();
+            ContactVueModele p = (ContactVueModele)item;
+            return (p.Contact.Nom.ToUpper().Contains(value)
+                    || p.Contact.Prenom.ToUpper().Contains(value));
+        }
     }
 }

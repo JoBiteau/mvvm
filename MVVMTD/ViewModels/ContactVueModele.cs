@@ -47,5 +47,23 @@ namespace MvvmTD.ViewModels
         {
             System.Windows.MessageBox.Show("Suppression du contact");
         }
+
+        public bool EstClient
+        {
+            get
+            {
+                if (contact.GetType() == typeof(Client)) return true;
+                return false;
+            }
+        }
+
+        public bool EstAmi
+        {
+            get
+            {
+                if (contact.GetType() == typeof(Ami)) return true;
+                return false;
+            }
+        }
     }
 }
