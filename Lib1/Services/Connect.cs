@@ -12,12 +12,13 @@ namespace Lib1.Services
 
         public Connect()
         {
-            Contacts = new List<Personne>();
-
-            Contacts.Add(new Client { Nom = "Barrack", Prenom = "Haffritt" });
-            Contacts.Add(new Client { Nom = "Barbara", Prenom = "Dégout" });
-            Contacts.Add(new Client { Nom = "Bart", Prenom = "Haba" });
-            Contacts.Add(new Ami { Nom = "Bernadette", Prenom = "Dejeu" });
+            Contacts = new List<Personne>
+            {
+                new Client { Prenom = "Barrack", Nom = "Haffritt" },
+                new Client { Prenom = "Barbara", Nom = "Dégout" },
+                new Client { Prenom = "Bart", Nom = "Haba" },
+                new Ami { Prenom = "Bernadette", Nom = "Dejeu" }
+            };
         }
 
         public static Connect Instance

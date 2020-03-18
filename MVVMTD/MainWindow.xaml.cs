@@ -28,7 +28,7 @@ namespace MvvmTD
             Connect connect = new Connect();
             List < Personne > listePersonne = connect.Load();
             
-            listPerson.ItemsSource = listePersonne;
+            //listPerson.ItemsSource = listePersonne;
         }
 
         public void onNameClicked()
