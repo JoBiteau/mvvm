@@ -32,7 +32,9 @@
                 <MenuItem Header="Ajouter Client" Command="{Binding NewCustomer}"/>
             </MenuItem>
             <MenuItem Header="Trier">
-                <MenuItem Header="Tri" Command="{Binding CommandeTrier}"/>
+                <MenuItem Header="Tri par défaut" Command="{Binding CommandeTrier}"/>
+                <MenuItem Header="Tri par Nom" Command="{Binding CommandeTrier}" CommandParameter="Contact.Nom"/>
+                <MenuItem Header="Tri par Prenom" Command="{Binding CommandeTrier}" CommandParameter="Contact.Prenom"/>
             </MenuItem>
         </Menu>
 

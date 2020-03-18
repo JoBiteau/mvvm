@@ -146,12 +146,15 @@ namespace MvvmTD.ViewModels
         {
             if (null == pNomProprieteDeTri)
             {
-                //tri par défaut
-                using (collectionView.DeferRefresh())
+                if (pNomProprieteDeTri == null)
                 {
-                    collectionView.SortDescriptions.Clear();
-                    collectionView.SortDescriptions.Add(new SortDescription("Nom", ListSortDirection.Ascending));
-                    collectionView.SortDescriptions.Add(new SortDescription("Prenom", ListSortDirection.Ascending));
+                    //tri par défaut
+                    using (collectionView.DeferRefresh())
+                    {
+                        collectionView.SortDescriptions.Clear();
+                        collectionView.SortDescriptions.Add(new SortDescription("Nom", ListSortDirection.Ascending));
+                        collectionView.SortDescriptions.Add(new SortDescription("Prenom", ListSortDirection.Ascending));
+                    }
                 }
             }
             else
@@ -169,6 +172,7 @@ namespace MvvmTD.ViewModels
             set
             {
                 collectionView.Filter = item => IsMatch(item, value);
+                OnPropertyChanged("TexteRechercherNoMatch");
             }
         }
 
@@ -176,12 +180,20 @@ namespace MvvmTD.ViewModels
         // pour déterminer si l'élément correspond ou non à la recherche.
         private bool IsMatch(object item, string value)
         {
+            Console.WriteLine(item);
             if (!(item is ContactVueModele)) return false;
 
             value = value.ToUpper();
+
             ContactVueModele p = (ContactVueModele)item;
-            return (p.Contact.Nom.ToUpper().Contains(value)
-                    || p.Contact.Prenom.ToUpper().Contains(value));
+            
+            return (p.Contact.Nom.ToUpper().Contains(value) || p.Contact.Prenom.ToUpper().Contains(value));
         }
+        public bool TexteRechercherNoMatch
+        {
+            get { return collectionView.IsEmpty; }
+        }
+
+
     }
 }
