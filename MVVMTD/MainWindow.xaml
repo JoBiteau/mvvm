@@ -11,6 +11,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         
         Title="Pattern MVVM" Height="450" Width="800">
+
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -22,10 +23,27 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="Fichier">
+                <MenuItem Command="ApplicationCommands.Copy"/>
+                <MenuItem Command="ApplicationCommands.Cut"/>
+                <MenuItem Command="ApplicationCommands.Paste"/>
+            </MenuItem>
+            <MenuItem Header="Tri">
+                <MenuItem Header="_Bold" IsCheckable="True"/>
+                <MenuItem Header="_Italic" IsCheckable="True"/>
+                <Separator/>
+                <MenuItem Header="_Increase Font Size"/>
+                <MenuItem Header="_Decrease Font Size"/>
+            </MenuItem>
+            <MenuItem Header="Edition">
+                <MenuItem Header="_Ex1" IsCheckable="True"/>
+                <MenuItem Header="_Ex2" IsCheckable="True"/>
+            </MenuItem>
+        </Menu>
 
-
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <ListBox Grid.Column="1" Grid.Row="1" x:Name="listPerson"  >
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <ListBox x:Name="listPerson"  >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid x:Name="nameListGrid">
@@ -47,9 +65,9 @@
         </StackPanel>
 
         <Grid x:Name="detailsGrid">
-            
+
         </Grid>
-        
+
         <Label Content="Nom" Grid.Column="3" HorizontalAlignment="Left" Margin="74,163,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,162,0,0" Grid.Row="1" x:Name="labelNom"
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
@@ -57,17 +75,19 @@
         <Label Content="Prenom" Grid.Column="3" HorizontalAlignment="Left" Margin="74,185,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,184,0,0" Grid.Row="1" x:Name="labelPrenom" 
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        
+
         <Label Content="Société" Grid.Column="3" HorizontalAlignment="Left" Margin="74,211,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,210,0,0" Grid.Row="1" x:Name="labelSociete"
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-        
+
         <Label Content="Téléphone" Grid.Column="3" HorizontalAlignment="Left" Margin="74,233,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,232,0,0" Grid.Row="1" x:Name="labelTelephone"
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        
+
         <Label Content="Email" Grid.Column="3" HorizontalAlignment="Left" Margin="74,256,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="143,255,0,0" Grid.Row="1" x:Name="labelEmail"
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Modifier" Grid.Column="3" HorizontalAlignment="Left" Margin="74,317,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Supprimer" Grid.Column="3" HorizontalAlignment="Left" Margin="190,317,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>
