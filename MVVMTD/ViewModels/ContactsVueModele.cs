@@ -19,6 +19,7 @@ namespace MvvmTD.ViewModels
         private RelayCommand newFriendCommand;
         private RelayCommand commandeSuivant;
         private RelayCommand commandePrecedent;
+        private RelayCommand commandeTrier;
 
         public ContactsVueModele()
         {
@@ -104,7 +105,7 @@ namespace MvvmTD.ViewModels
                 return true;
             return false;
         }
-    
+
         public ICommand CommandePrecedent
         {
             get
@@ -123,7 +124,44 @@ namespace MvvmTD.ViewModels
         }
         public bool CanGoPrecedent()
         {
-            return collectionView.CurrentPosition == 1;
+            return collectionView.CurrentPosition != 0;
+        }
+
+        public ICommand CommandeTrier
+        {
+            get
+            {
+                if (commandeTrier == null)
+                {
+                    commandeTrier = new RelayCommand(new Action<object>(TrierLaListe));
+                }
+                return commandeTrier;
+            }
+        }
+
+        // Tri de la CollectionView :
+        // l'utilisation de la méthode DeferRefresh permet d'effectuer le tri qu'à la sortie de l'instruction.
+        // sinon, la collection serait réarrangée à chaque fois, au clear puis à chaque Add  !!
+        public void TrierLaListe(object pNomProprieteDeTri)
+        {
+            if (null == pNomProprieteDeTri)
+            {
+                //tri par défaut
+                using (collectionView.DeferRefresh())
+                {
+                    collectionView.SortDescriptions.Clear();
+                    collectionView.SortDescriptions.Add(new SortDescription("Nom", ListSortDirection.Ascending));
+                    collectionView.SortDescriptions.Add(new SortDescription("Prenom", ListSortDirection.Ascending));
+                }
+            }
+            else
+            {
+                using (collectionView.DeferRefresh())
+                {
+                    collectionView.SortDescriptions.Clear();
+                    collectionView.SortDescriptions.Add(new SortDescription(pNomProprieteDeTri.ToString(), ListSortDirection.Ascending));
+                }
+            }
         }
     }
 }

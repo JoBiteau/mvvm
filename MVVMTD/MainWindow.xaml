@@ -31,9 +31,8 @@
                 <MenuItem Header="Ajouter Ami" Command="{Binding NewFriend}"/>
                 <MenuItem Header="Ajouter Client" Command="{Binding NewCustomer}"/>
             </MenuItem>
-            <MenuItem Header="Edition">
-                <MenuItem Header="Ex1" IsCheckable="True"/>
-                <MenuItem Header="Ex2" IsCheckable="True"/>
+            <MenuItem Header="Trier">
+                <MenuItem Header="Tri" Command="{Binding CommandeTrier}"/>
             </MenuItem>
         </Menu>
 
