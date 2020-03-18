@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MvvmTD.Views.ucContact"
+﻿<UserControl x:Class="MvvmTD.Views.UcContact"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -37,7 +37,7 @@
 
         <Label Content="Nom" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Grid.Row="0" x:Name="inputNom"
-                 TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="inputNom_TextChanged"/>
+                 TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="InputNom_TextChanged"/>
 
         <Label Content="Prenom" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Grid.Row="1" x:Name="inputPrenom" 
@@ -45,7 +45,7 @@
 
         <Label Content="Société" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" x:Name="inputSociete"
-                 TextWrapping="Wrap" VerticalAlignment="Top"  TextChanged="inputSociete_TextChanged"/>
+                 TextWrapping="Wrap" VerticalAlignment="Top"  TextChanged="InputSociete_TextChanged"/>
 
         <Label Content="Téléphone" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Grid.Row="3" x:Name="inputTelephone"

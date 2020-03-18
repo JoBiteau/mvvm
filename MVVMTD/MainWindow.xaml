@@ -36,6 +36,6 @@
             </MenuItem>
         </Menu>
 
-        <Views:ucContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Views:UcContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
     </Grid>
 </Window>
