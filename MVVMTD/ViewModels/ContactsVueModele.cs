@@ -191,8 +191,7 @@ namespace MvvmTD.ViewModels
                 Client client = (Client)person;
                 if (null != client.Societe)
                 {
-                    bool val = client.Societe.ToUpper().Contains(value);
-                    societeMatch = true;
+                    societeMatch = client.Societe.ToUpper().Contains(value);
                 }
             }
 
