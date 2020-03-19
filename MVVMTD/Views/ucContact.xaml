@@ -47,7 +47,7 @@
 
         <Label Content="Anniversaire : " Grid.Column="0" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Top"
                Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}}"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" Text="{Binding Contact.Anniversaire}"
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" Text="{Binding Contact.Anniversaire, StringFormat=dd-MM-yyyy}"
                  TextWrapping="Wrap" VerticalAlignment="Top"
                  Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
