@@ -18,7 +18,18 @@ namespace ContactModele.Services
                 new Client { Prenom = "Barrack", Nom = "Haffritt" },
                 new Client { Prenom = "Barbara", Nom = "Dégout" },
                 new Client { Prenom = "Bart", Nom = "Haba" },
-                new Ami { Prenom = "Bernadette", Nom = "Dejeu" }
+                new Ami { Prenom = "Jean-Loup", Nom = "Chretien" },
+                new Client { Prenom = "Marie", Nom = "Curie" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Ami { Prenom = "Victor", Nom = "Hugo" },
+                new Client { Prenom = "Don", Nom = "Corleone" }
             };
         }
 

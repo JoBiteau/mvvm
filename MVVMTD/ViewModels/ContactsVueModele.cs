@@ -186,14 +186,19 @@ namespace MvvmTD.ViewModels
             value = value.ToUpper();
 
             ContactVueModele p = (ContactVueModele)item;
-            
+
+            Personne test = p.Contact;
+            Console.WriteLine(test.GetType());
+            //if (p.Contact.GetType == typeof(Client))
+            //{
+            //    return p.Contact.Societe.ToUpper().Contains(value);
+            //}
+
             return (p.Contact.Nom.ToUpper().Contains(value) || p.Contact.Prenom.ToUpper().Contains(value));
         }
         public bool TexteRechercherNoMatch
         {
             get { return collectionView.IsEmpty; }
         }
-
-
     }
 }
