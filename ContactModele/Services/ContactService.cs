@@ -128,20 +128,27 @@ namespace ContactModele.Services
             command.Parameters.Add(new MySqlParameter("@nom", person.Nom));
             command.Parameters.Add(new MySqlParameter("@prenom", person.Prenom));
             command.Parameters.Add(new MySqlParameter("@adresse", person.Adresse));
+            command.Parameters.Add(new MySqlParameter("@email", person.Email));
+            command.Parameters.Add(new MySqlParameter("@telephone", person.Telephone));
 
             if (person.GetType() == typeof(Client))
             {
                 command.Parameters.Add(new MySqlParameter("@societe", (person as Client).Societe));
                 command.Parameters.Add(new MySqlParameter("@noclient", (person as Client).Num_client));
+
+                command.Parameters.Add(new MySqlParameter("@dtnaissance", null));
+                command.Parameters.Add(new MySqlParameter("@mobile", null));
             }
             else if (person.GetType() == typeof(Ami))
             {
                 command.Parameters.Add(new MySqlParameter("@dtnaissance", (person as Ami).Anniversaire));
                 command.Parameters.Add(new MySqlParameter("@mobile", (person as Ami).Num_mobile));
+
+                command.Parameters.Add(new MySqlParameter("@societe", null));
+                command.Parameters.Add(new MySqlParameter("@noclient", null));
             }
 
-            int nbLignesModifies = command.ExecuteNonQuery();
-            Console.WriteLine(nbLignesModifies);
+            command.ExecuteNonQuery();
 
             conn.Close();
         }

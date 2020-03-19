@@ -140,9 +140,6 @@ namespace MvvmTD.ViewModels
             }
         }
 
-        // Tri de la CollectionView :
-        // l'utilisation de la méthode DeferRefresh permet d'effectuer le tri qu'à la sortie de l'instruction.
-        // sinon, la collection serait réarrangée à chaque fois, au clear puis à chaque Add  !!
         public void TrierLaListe(object pNomProprieteDeTri)
         {
             if (null == pNomProprieteDeTri)

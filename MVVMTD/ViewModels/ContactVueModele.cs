@@ -1,4 +1,5 @@
 ﻿using ContactModele.Entities;
+using ContactModele.Services;
 using System;
 using System.Windows.Input;
 
@@ -6,6 +7,7 @@ namespace MvvmTD.ViewModels
 {
     class ContactVueModele : ViewModelBase
     {
+        private ContactService service;
         private Personne contact;
         private RelayCommand editCommand;
         private RelayCommand delCommand;
@@ -31,7 +33,8 @@ namespace MvvmTD.ViewModels
 
         private void EnregistrerContact()
         {
-            System.Windows.MessageBox.Show("Enregistrement du contact");
+            service = new ContactService();
+            service.Edit(contact);
         }
 
         public ICommand DelCommand
