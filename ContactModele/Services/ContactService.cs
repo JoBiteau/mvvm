@@ -71,7 +71,6 @@ namespace ContactModele.Services
                     if (reader.IsDBNull(9) == false) (personne as Ami).Num_mobile = reader.GetInt32(9);
                     if (reader.IsDBNull(10) == false) (personne as Ami).Anniversaire = reader.GetDateTime(10);
 
-                    string str = personne.ToString();
                     Contacts.Add(personne);
                 }
                 reader.Close();
