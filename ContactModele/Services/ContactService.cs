@@ -33,13 +33,7 @@ namespace ContactModele.Services
                 "societe, noclient, mobile, dtnaissance " +
                 "from personnes";
 
-            MySqlConnectionStringBuilder csb = new MySqlConnectionStringBuilder
-            {
-                Server = "localhost",
-                Database = "c_sharp_td",
-                UserID = "root",
-                Password = "dev"
-            };
+            MySqlConnectionStringBuilder csb = this.GetConnection();
 
             using (MySqlConnection conn = new MySqlConnection(csb.ConnectionString))
             {
@@ -47,7 +41,6 @@ namespace ContactModele.Services
                 conn.Open();
 
                 MySqlCommand command = new MySqlCommand(sql, conn);
-
 
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -64,9 +57,11 @@ namespace ContactModele.Services
                         personne = new Ami();
                     }
 
+                    personne.Id = reader.GetInt32(1);
                     personne.Nom = reader.GetString(2);
                     personne.Prenom = reader.GetString(3); 
                     
+                    if (reader.IsDBNull(4) == false) personne.Adresse = reader.GetString(4);
                     if (reader.IsDBNull(4) == false) personne.Email = reader.GetString(4);
                     if (reader.IsDBNull(5) == false) personne.Telephone = reader.GetString(5);
 
@@ -85,6 +80,69 @@ namespace ContactModele.Services
             }
 
             return Contacts;
+        }
+
+        private MySqlConnectionStringBuilder GetConnection()
+        {
+            return new MySqlConnectionStringBuilder
+            {
+                Server = "localhost",
+                Database = "c_sharp_td",
+                UserID = "root",
+                Password = "dev"
+            };
+        }
+
+        public void Edit(Personne person)
+        {
+            string sql = "";
+         
+            
+            if (person.Id > 0)
+            {
+                sql = "update personnes set nom=@nom, prenom=@prenom, adresse=@adresse, " +
+                                            "email=@email, telephone=@telephone, " +
+                                            "societe=@societe, noclient=@noclient, " +
+                                            "mobile=@mobile, dtnaissance=@dtnaissance " +
+                        "where id=@id";
+            }
+            else
+            {
+                sql = "insert into personnes (nom,prenom,adresse,email,telephone," +
+                                                "societe,noclient,mobile,dtnaissance) " +
+                        "values (@nom,@prenom,@adresse,@email,@telephone," +
+                                "@societe,@noclient,@mobile,@dtnaissance)";
+            }
+
+            MySqlConnectionStringBuilder csb = GetConnection();
+
+            using MySqlConnection conn = new MySqlConnection(csb.ConnectionString);
+            conn.Open();
+
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            if (person.Id > 0)
+            {
+                command.Parameters.Add(new MySqlParameter("@id", person.Id));
+            }
+
+            command.Parameters.Add(new MySqlParameter("@nom", person.Nom));
+            command.Parameters.Add(new MySqlParameter("@prenom", person.Prenom));
+            command.Parameters.Add(new MySqlParameter("@adresse", person.Adresse));
+
+            if (person.GetType() == typeof(Client))
+            {
+                command.Parameters.Add(new MySqlParameter("@societe", (person as Client).Societe));
+                command.Parameters.Add(new MySqlParameter("@noclient", (person as Client).Num_client));
+            }
+            else if (person.GetType() == typeof(Ami))
+            {
+                command.Parameters.Add(new MySqlParameter("@dtnaissance", (person as Ami).Anniversaire));
+                command.Parameters.Add(new MySqlParameter("@mobile", (person as Ami).Num_mobile));
+            }
+
+            int nbLignesModifies = command.ExecuteNonQuery();
+
+            conn.Close();
         }
     }
 }
