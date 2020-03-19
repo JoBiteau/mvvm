@@ -7,7 +7,6 @@ namespace MvvmTD.ViewModels
 {
     class ContactVueModele : ViewModelBase
     {
-        public EventHandler onRefreshList;
         public EventHandler delFromList;
 
         private ContactService service;

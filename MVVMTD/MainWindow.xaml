@@ -64,4 +64,8 @@
         <Button Content="&lt;" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Bottom" Command="{Binding CommandePrecedent}" Margin="10"/>
         <Button Content="&gt;" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Bottom" Command="{Binding CommandeSuivant}" Margin="10"/>
     </Grid>
+
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+Alt+a" Command="{Binding NewFriend}" />
+    </Window.InputBindings>
 </Window>
