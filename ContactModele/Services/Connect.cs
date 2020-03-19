@@ -15,7 +15,7 @@ namespace ContactModele.Services
             Contacts = new List<Personne>
             {
                 new Ami { Prenom = "Bernadette", Nom = "Dejeu" },
-                new Client { Prenom = "Barrack", Nom = "Haffritt" },
+                new Client { Prenom = "Barrack", Nom = "Haffritt", Societe="Lego" },
                 new Client { Prenom = "Barbara", Nom = "Dégout" },
                 new Client { Prenom = "Bart", Nom = "Haba" },
                 new Ami { Prenom = "Jean-Loup", Nom = "Chretien" },

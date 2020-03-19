@@ -176,25 +176,27 @@ namespace MvvmTD.ViewModels
             }
         }
 
-        // Méthode appellée pour chaque élément de la collection
-        // pour déterminer si l'élément correspond ou non à la recherche.
         private bool IsMatch(object item, string value)
         {
-            Console.WriteLine(item);
+            bool societeMatch = false;
             if (!(item is ContactVueModele)) return false;
 
             value = value.ToUpper();
 
             ContactVueModele p = (ContactVueModele)item;
 
-            Personne test = p.Contact;
-            Console.WriteLine(test.GetType());
-            //if (p.Contact.GetType == typeof(Client))
-            //{
-            //    return p.Contact.Societe.ToUpper().Contains(value);
-            //}
+            Personne person = p.Contact;
+            if (person.GetType() == typeof(Client))
+            {
+                Client client = (Client)person;
+                if (null != client.Societe)
+                {
+                    bool val = client.Societe.ToUpper().Contains(value);
+                    societeMatch = true;
+                }
+            }
 
-            return (p.Contact.Nom.ToUpper().Contains(value) || p.Contact.Prenom.ToUpper().Contains(value));
+            return (p.Contact.Nom.ToUpper().Contains(value) || p.Contact.Prenom.ToUpper().Contains(value) || societeMatch);
         }
         public bool TexteRechercherNoMatch
         {

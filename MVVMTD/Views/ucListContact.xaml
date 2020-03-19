@@ -10,9 +10,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
         <ScrollViewer>
-        <ListBox Grid.Row="0" 
+        <ListBox Grid.Row="0" Grid.Column="0"
                  ItemsSource="{Binding ListeContacts}" 
                  IsSynchronizedWithCurrentItem="True"
                  ScrollViewer.VerticalScrollBarVisibility="Auto">

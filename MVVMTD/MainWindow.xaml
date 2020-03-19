@@ -15,7 +15,6 @@
         MinWidth="700" MinHeight="500"
         Height="500"
         SizeToContent="Width">
-
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="150" MaxWidth="250"/>
@@ -59,7 +58,7 @@
         </Grid>
         
         <Views:ucListContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 10"/>
-        <Views:UcContact Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="293" DataContext="{Binding ContactSelected}" />
+        <Views:UcContact Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" DataContext="{Binding ContactSelected}" />
 
         <Button Content="&lt;" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Bottom" Command="{Binding CommandePrecedent}" Margin="10"/>
         <Button Content="&gt;" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Bottom" Command="{Binding CommandeSuivant}" Margin="10"/>
