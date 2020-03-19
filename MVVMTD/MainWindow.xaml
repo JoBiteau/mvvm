@@ -51,7 +51,7 @@
             <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Content="Rechercher" VerticalContentAlignment="Center"/>
             <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" MinWidth="100" VerticalContentAlignment="Center"  
                      Text="{Binding TexteRechercher, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Background="{Binding TextRechercheNoMatch, Converter={StaticResource BoolToBackgroundConverter}}"
+                     Background="{Binding TexteRechercherNoMatch, Converter={StaticResource BoolToBackgroundConverter}}"
                      CharacterCasing="Upper" 
                      ToolTip="Recherche sur le nom, prénom"/>
     
