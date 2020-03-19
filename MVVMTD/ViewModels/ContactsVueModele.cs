@@ -12,9 +12,6 @@ namespace MvvmTD.ViewModels
 {
     class ContactsVueModele : ViewModelBase
     {
-        private EventHandler onRefreshList;
-        private EventHandler delFromList;
-
         private readonly ObservableCollection<ContactVueModele> listeContacts;
         private readonly ICollectionView collectionView;
 
@@ -79,8 +76,6 @@ namespace MvvmTD.ViewModels
         {
             ListeContacts.Add(new ContactVueModele(new Client { Nom = "Nouveau client" }));
             
-            if (onRefreshList != null) onRefreshList(ListeContacts, EventArgs.Empty);
-            onRefreshList?.Invoke(ListeContacts, EventArgs.Empty);
         }
 
         public ICommand NewFriend
@@ -96,8 +91,6 @@ namespace MvvmTD.ViewModels
         {
             ListeContacts.Add(new ContactVueModele(new Ami { Nom = "Nouvel ami" }));
 
-            if (onRefreshList != null) onRefreshList(ListeContacts, EventArgs.Empty);
-            onRefreshList?.Invoke(ListeContacts, EventArgs.Empty);
         }
 
         public ICommand CommandeSuivant
