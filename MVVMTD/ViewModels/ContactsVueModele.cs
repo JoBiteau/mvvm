@@ -23,7 +23,8 @@ namespace MvvmTD.ViewModels
 
         public ContactsVueModele()
         {
-            List<Personne> personnes = Connect.Instance.Load();
+            List<Personne> personnes = ContactService.Instance.Load();
+            //List<Personne> personnes = Connect.Instance.Load();
 
             listeContacts = new ObservableCollection<ContactVueModele>();
 
