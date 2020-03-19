@@ -141,6 +141,29 @@ namespace ContactModele.Services
             }
 
             int nbLignesModifies = command.ExecuteNonQuery();
+            Console.WriteLine(nbLignesModifies);
+
+            conn.Close();
+        }
+
+        public void Del(Personne person)
+        {
+            string sql = "";
+
+             sql = "delete from personnes where id=@id";
+           
+
+            MySqlConnectionStringBuilder csb = GetConnection();
+
+            using MySqlConnection conn = new MySqlConnection(csb.ConnectionString);
+            conn.Open();
+
+            MySqlCommand command = new MySqlCommand(sql, conn);
+         
+            command.Parameters.Add(new MySqlParameter("@id", person.Id));
+
+            int nbLignesModifies = command.ExecuteNonQuery();
+            Console.WriteLine(nbLignesModifies);
 
             conn.Close();
         }
