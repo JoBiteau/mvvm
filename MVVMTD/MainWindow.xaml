@@ -39,9 +39,10 @@
         </Menu>
 
         <TextBox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right" Width="100"  
-                 Text="{Binding TextRechercher, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding TexteRechercher, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Background="{Binding TextRechercheNoMatch, Converter={StaticResource BoolToBackgroundConverter}}"
-                 CharacterCasing="Upper" ToolTip="Recherche sur le nom, prénom"/>
+                 CharacterCasing="Upper" 
+                 ToolTip="Recherche sur le nom, prénom"/>
 
         <Views:ucListContact Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Views:UcContact DataContext="{Binding ContactSelected}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
