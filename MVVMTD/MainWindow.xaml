@@ -67,5 +67,6 @@
 
     <Window.InputBindings>
         <KeyBinding Gesture="Ctrl+Alt+a" Command="{Binding NewFriend}" />
+        <KeyBinding Gesture="Ctrl+Alt+c" Command="{Binding NewCustomer}" />
     </Window.InputBindings>
 </Window>
