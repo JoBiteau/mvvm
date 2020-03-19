@@ -100,7 +100,7 @@ namespace ContactModele.Services
             
             if (person.Id > 0)
             {
-                sql = "update personnes set nom=@nom, prenom=@prenom, adresse=@adresse, " +
+                sql = "update personnes set type=@type, nom=@nom, prenom=@prenom, adresse=@adresse, " +
                                             "email=@email, telephone=@telephone, " +
                                             "societe=@societe, noclient=@noclient, " +
                                             "mobile=@mobile, dtnaissance=@dtnaissance " +
@@ -108,9 +108,9 @@ namespace ContactModele.Services
             }
             else
             {
-                sql = "insert into personnes (nom,prenom,adresse,email,telephone," +
+                sql = "insert into personnes (type,nom,prenom,adresse,email,telephone," +
                                                 "societe,noclient,mobile,dtnaissance) " +
-                        "values (@nom,@prenom,@adresse,@email,@telephone," +
+                        "values (@type,@nom,@prenom,@adresse,@email,@telephone," +
                                 "@societe,@noclient,@mobile,@dtnaissance)";
             }
 
@@ -133,6 +133,7 @@ namespace ContactModele.Services
 
             if (person.GetType() == typeof(Client))
             {
+                command.Parameters.Add(new MySqlParameter("@type", "c"));
                 command.Parameters.Add(new MySqlParameter("@societe", (person as Client).Societe));
                 command.Parameters.Add(new MySqlParameter("@noclient", (person as Client).Num_client));
 
@@ -141,6 +142,8 @@ namespace ContactModele.Services
             }
             else if (person.GetType() == typeof(Ami))
             {
+                command.Parameters.Add(new MySqlParameter("@type", "a"));
+
                 command.Parameters.Add(new MySqlParameter("@dtnaissance", (person as Ami).Anniversaire));
                 command.Parameters.Add(new MySqlParameter("@mobile", (person as Ami).Num_mobile));
 

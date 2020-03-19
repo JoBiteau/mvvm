@@ -12,6 +12,9 @@ namespace MvvmTD.ViewModels
 {
     class ContactsVueModele : ViewModelBase
     {
+        private EventHandler onRefreshList;
+        private EventHandler delFromList;
+
         private readonly ObservableCollection<ContactVueModele> listeContacts;
         private readonly ICollectionView collectionView;
 
@@ -21,22 +24,29 @@ namespace MvvmTD.ViewModels
         private RelayCommand commandePrecedent;
         private RelayCommand commandeTrier;
 
+
         public ContactsVueModele()
         {
             List<Personne> personnes = ContactService.Instance.Load();
-            //List<Personne> personnes = Connect.Instance.Load();
 
             listeContacts = new ObservableCollection<ContactVueModele>();
 
             foreach (Personne personne in personnes)
             {
-                listeContacts.Add(new ContactVueModele(personne));
+                ContactVueModele cvm = new ContactVueModele(personne);
+                cvm.delFromList += DelFromList;
+                listeContacts.Add(cvm);
             }
 
             collectionView = CollectionViewSource.GetDefaultView(listeContacts);
             collectionView.CurrentChanged += OnCollectionViewCurrentChanged;
             collectionView.MoveCurrentToFirst();
 
+        }
+
+        public void DelFromList(object sender, EventArgs e)
+        {
+            ListeContacts.Remove(sender as ContactVueModele);
         }
 
         public void OnCollectionViewCurrentChanged(object sender, EventArgs e)
@@ -67,7 +77,10 @@ namespace MvvmTD.ViewModels
         }
         private void AjoutClient()
         {
-            System.Windows.MessageBox.Show("Ajout d'un client");
+            ListeContacts.Add(new ContactVueModele(new Client { Nom = "Nouveau client" }));
+            
+            if (onRefreshList != null) onRefreshList(ListeContacts, EventArgs.Empty);
+            onRefreshList?.Invoke(ListeContacts, EventArgs.Empty);
         }
 
         public ICommand NewFriend
@@ -81,7 +94,10 @@ namespace MvvmTD.ViewModels
 
         private void AjoutAmi()
         {
-            System.Windows.MessageBox.Show("Ajout d'un ami");
+            ListeContacts.Add(new ContactVueModele(new Ami { Nom = "Nouvel ami" }));
+
+            if (onRefreshList != null) onRefreshList(ListeContacts, EventArgs.Empty);
+            onRefreshList?.Invoke(ListeContacts, EventArgs.Empty);
         }
 
         public ICommand CommandeSuivant

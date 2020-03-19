@@ -7,13 +7,19 @@ namespace MvvmTD.ViewModels
 {
     class ContactVueModele : ViewModelBase
     {
+        public EventHandler onRefreshList;
+        public EventHandler delFromList;
+
         private ContactService service;
         private Personne contact;
         private RelayCommand editCommand;
         private RelayCommand delCommand;
 
+
+
         public ContactVueModele(Personne personne)
         {
+            service = new ContactService();
             contact = personne ?? throw new NullReferenceException("Personne");
         }
 
@@ -33,7 +39,6 @@ namespace MvvmTD.ViewModels
 
         private void EnregistrerContact()
         {
-            service = new ContactService();
             service.Edit(contact);
         }
 
@@ -48,8 +53,10 @@ namespace MvvmTD.ViewModels
 
         private void SupprimerContact()
         {
-            System.Windows.MessageBox.Show("Suppression du contact");
+            service.Del(contact);
+            delFromList?.Invoke(this, EventArgs.Empty);
         }
+
 
         public bool EstClient
         {

@@ -28,7 +28,6 @@ namespace MvvmTD
             InitializeComponent();
 
             this.DataContext = new ContactsVueModele();
-            //listPerson.ItemsSource = listePersonne;
         }
 
         private void UcContact_Loaded(object sender, RoutedEventArgs e)
