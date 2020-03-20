@@ -48,16 +48,59 @@ namespace MvvmTD
             return result;
         }
 
-        public bool EnregistrerContact(Personne contact)
+        public bool Edit(Personne contact)
         {
-            return true;
+            using (ContactsContext context = new ContactsContext())
+            {
+                if (contact.GetType() == typeof(Client))
+                {
+                    if (contact.Id > 0)
+                    {
+                        context.Clients.Attach(contact as Client);
+                    }
+                    else
+                    {
+                        context.Clients.Add(contact as Client);
+                    }
+                } 
+                else
+                {
+                    if (contact.Id > 0)
+                    {
+                        context.Amis.Attach(contact as Ami);
+                    }
+                    else
+                    {
+                        context.Amis.Add(contact as Ami);
+                    }
+                }
+                context.SaveChanges();
+            }
+
+             return true;
         }
 
-        public bool SupprimerContact(Personne contact)
+        public bool Del(Personne contact)
         {
-            return true;
+            using (ContactsContext context = new ContactsContext())
+            {
+                if (0 == contact.Id)
+                {
+                    return false;
+                }
 
+                if (contact.GetType() == typeof(Client))
+                {
+                    context.Clients.Remove(contact as Client);
+                }
+                else
+                {
+                    context.Amis.Remove(contact as Ami);
+                }
+                context.SaveChanges();
+            }
+
+            return true;
         }
     }
-    
 }

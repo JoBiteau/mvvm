@@ -12,7 +12,7 @@ namespace MvvmTD.ViewModels
 {
     class ContactsVueModele : ViewModelBase
     {
-        private readonly ObservableCollection<ContactVueModele> listeContacts;
+        private ObservableCollection<ContactVueModele> listeContacts;
         private readonly ICollectionView collectionView;
 
         private RelayCommand newCustomerCommand;
@@ -33,6 +33,7 @@ namespace MvvmTD.ViewModels
             {
                 ContactVueModele cvm = new ContactVueModele(personne);
                 cvm.delFromList += DelFromList;
+                cvm.addToList += AddToList;
                 listeContacts.Add(cvm);
             }
 
@@ -46,6 +47,10 @@ namespace MvvmTD.ViewModels
         {
             ListeContacts.Remove(sender as ContactVueModele);
         }
+        public void AddToList(object sender, EventArgs e)
+        {
+            ListeContacts.Add(sender as ContactVueModele);
+        }
 
         public void OnCollectionViewCurrentChanged(object sender, EventArgs e)
         {
@@ -55,6 +60,21 @@ namespace MvvmTD.ViewModels
         public ObservableCollection<ContactVueModele> ListeContacts
         {
             get { return listeContacts; }
+            set 
+            {
+                List<Personne> personnes = ContactEFService.Instance.Load();
+                ObservableCollection<ContactVueModele> newListeContacts = new ObservableCollection<ContactVueModele>();
+
+                foreach (Personne personne in personnes)
+                {
+                    ContactVueModele cvm = new ContactVueModele(personne);
+                    cvm.delFromList += DelFromList;
+                    cvm.addToList += AddToList;
+                    newListeContacts.Add(cvm);
+                }
+
+                listeContacts = newListeContacts;
+            }
         }
 
         public ContactVueModele ContactSelected
@@ -75,8 +95,10 @@ namespace MvvmTD.ViewModels
         }
         private void AjoutClient()
         {
-            ListeContacts.Add(new ContactVueModele(new Client { Nom = "Nouveau client" }));
-            
+            ContactVueModele cvm = new ContactVueModele(new Client { Nom = "Nouveau", Prenom = "Client" });
+            cvm.delFromList += DelFromList;
+            cvm.addToList += AddToList;
+            ListeContacts.Add(cvm);
         }
 
         public ICommand NewFriend
@@ -90,8 +112,11 @@ namespace MvvmTD.ViewModels
 
         private void AjoutAmi()
         {
-            ListeContacts.Add(new ContactVueModele(new Ami { Nom = "Nouvel ami" }));
 
+            ContactVueModele cvm = new ContactVueModele(new Ami { Nom = "Nouvel", Prenom = "Ami" });
+            cvm.delFromList += DelFromList;
+            cvm.addToList += AddToList;
+            ListeContacts.Add(cvm);
         }
 
         public ICommand CommandeSuivant

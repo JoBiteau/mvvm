@@ -8,8 +8,9 @@ namespace MvvmTD.ViewModels
     class ContactVueModele : ViewModelBase
     {
         public EventHandler delFromList;
+        public EventHandler addToList;
 
-        private ContactService service;
+        private ContactEFService service;
         private Personne contact;
         private RelayCommand editCommand;
         private RelayCommand delCommand;
@@ -18,7 +19,7 @@ namespace MvvmTD.ViewModels
 
         public ContactVueModele(Personne personne)
         {
-            service = new ContactService();
+            service = new ContactEFService();
             contact = personne ?? throw new NullReferenceException("Personne");
         }
 
@@ -39,6 +40,7 @@ namespace MvvmTD.ViewModels
         private void EnregistrerContact()
         {
             service.Edit(contact);
+            addToList?.Invoke(this, EventArgs.Empty);
         }
 
         public ICommand DelCommand
