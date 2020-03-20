@@ -33,7 +33,6 @@ namespace MvvmTD.ViewModels
             {
                 ContactVueModele cvm = new ContactVueModele(personne);
                 cvm.delFromList += DelFromList;
-                cvm.addToList += AddToList;
                 listeContacts.Add(cvm);
             }
 
@@ -69,7 +68,6 @@ namespace MvvmTD.ViewModels
                 {
                     ContactVueModele cvm = new ContactVueModele(personne);
                     cvm.delFromList += DelFromList;
-                    cvm.addToList += AddToList;
                     newListeContacts.Add(cvm);
                 }
 
@@ -97,7 +95,6 @@ namespace MvvmTD.ViewModels
         {
             ContactVueModele cvm = new ContactVueModele(new Client { Nom = "Nouveau", Prenom = "Client" });
             cvm.delFromList += DelFromList;
-            cvm.addToList += AddToList;
             ListeContacts.Add(cvm);
         }
 
@@ -115,7 +112,6 @@ namespace MvvmTD.ViewModels
 
             ContactVueModele cvm = new ContactVueModele(new Ami { Nom = "Nouvel", Prenom = "Ami" });
             cvm.delFromList += DelFromList;
-            cvm.addToList += AddToList;
             ListeContacts.Add(cvm);
         }
 

@@ -40,28 +40,28 @@
 
 
         <Label Content="Société : " Grid.Column="0" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Top"
-               Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}}"/>
+               Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" Text="{Binding Contact.Societe}"
                  TextWrapping="Wrap" VerticalAlignment="Top"  MinWidth="25"
-                 Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                 Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
 
         <Label Content="Anniversaire : " Grid.Column="0" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Top"
-               Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}}"/>
+               Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" Text="{Binding Contact.Anniversaire, StringFormat=dd-MM-yyyy}"
                  TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="25"
-                 Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                 Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
 
         <Label Content="Numéro client : " Grid.Column="0" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Top"
-               Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}}"/>
+               Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Grid.Row="5" Text="{Binding Contact.Num_client}"
                  TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="25"
-                 Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                 Visibility="{Binding EstClient, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
 
         <Label Content="Numéro mobile : " Grid.Column="0" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Top" 
-               Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}}"/>
+               Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Grid.Row="5" Text="{Binding Contact.Num_mobile}"
                  TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="25"
-                 Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                 Visibility="{Binding EstAmi, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
 
         <Button Command="{Binding EditCommand}" Content="Modifier" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
         <Button Command="{Binding DelCommand}" Content="Supprimer" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>

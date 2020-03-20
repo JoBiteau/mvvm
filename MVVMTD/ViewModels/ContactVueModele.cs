@@ -8,7 +8,6 @@ namespace MvvmTD.ViewModels
     class ContactVueModele : ViewModelBase
     {
         public EventHandler delFromList;
-        public EventHandler addToList;
 
         private ContactEFService service;
         private Personne contact;
@@ -40,7 +39,6 @@ namespace MvvmTD.ViewModels
         private void EnregistrerContact()
         {
             service.Edit(contact);
-            addToList?.Invoke(this, EventArgs.Empty);
         }
 
         public ICommand DelCommand
