@@ -24,7 +24,8 @@ namespace MvvmTD.ViewModels
 
         public ContactsVueModele()
         {
-            List<Personne> personnes = ContactService.Instance.Load();
+            List<Personne> personnes = ContactEFService.Instance.Load();
+            //List<Personne> personnes = ContactService.Instance.Load();
 
             listeContacts = new ObservableCollection<ContactVueModele>();
 
