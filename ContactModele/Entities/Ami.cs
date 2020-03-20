@@ -7,7 +7,7 @@ namespace ContactModele.Entities
     public class Ami : Personne
     {
         public DateTime Anniversaire { get; set; }
-        public int Num_mobile { get; set; }
+        public string Num_mobile { get; set; }
 
         public override string ToString()
         {

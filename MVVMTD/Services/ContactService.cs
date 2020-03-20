@@ -68,7 +68,7 @@ namespace ContactModele.Services
                     if (reader.IsDBNull(7) == false) (personne as Client).Societe = reader.GetString(7);
                     if (reader.IsDBNull(8) == false) (personne as Client).Num_client = reader.GetInt32(8);
 
-                    if (reader.IsDBNull(9) == false) (personne as Ami).Num_mobile = reader.GetInt32(9);
+                    if (reader.IsDBNull(9) == false) (personne as Ami).Num_mobile = reader.GetString(9);
                     if (reader.IsDBNull(10) == false) (personne as Ami).Anniversaire = reader.GetDateTime(10);
 
                     Contacts.Add(personne);

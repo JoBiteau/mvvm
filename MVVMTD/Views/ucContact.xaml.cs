@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace MvvmTD.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour ucContact.xaml
-    /// </summary>
     public partial class UcContact : UserControl
     {
         public UcContact()
